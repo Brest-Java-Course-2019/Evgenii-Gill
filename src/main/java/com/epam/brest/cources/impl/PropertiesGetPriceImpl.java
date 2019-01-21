@@ -65,7 +65,7 @@ public class PropertiesGetPriceImpl implements PropertiesGetPrice
        try{
            return new BigDecimal(value);
        }
-           catch (NumberFormatException ex){
+           catch ( final NumberFormatException ex){
            final String erorMessage = "Failed to parse value [" + value + "] by key [" + key + "].";
            throw new PropertyExeption(erorMessage);
        }
