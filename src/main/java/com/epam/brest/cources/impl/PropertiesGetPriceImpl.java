@@ -1,4 +1,4 @@
-package com.epam.brest.cources.Impl;
+package com.epam.brest.cources.impl;
 
 import com.epam.brest.cources.exeption.PropertyExeption;
 import com.epam.brest.cources.intf.PropertiesGetPrice;
