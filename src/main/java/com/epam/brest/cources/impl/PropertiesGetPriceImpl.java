@@ -31,6 +31,7 @@ public class PropertiesGetPriceImpl implements PropertiesGetPrice
             final BigDecimal distance = getValueByKey(properties, DISTANCE);
             final BigDecimal price = getValueByKey(properties, PRICE);
 
+
             return new PriceProperty(weight, distance, price);
 
         } catch (final IOException e) {
