@@ -16,6 +16,7 @@ public class CalculatorImpl implements Calculator {
     @Override
     public BigDecimal calculatePrice(final BigDecimal distance, final BigDecimal weight) {
         final BigDecimal totalPrice = property.getPrice().multiply(distance.multiply(weight));
+        System.out.println("totalPrice = " + totalPrice);
 
         if (totalPrice.compareTo(property.getMinprice()) >= 0){
             return totalPrice;
