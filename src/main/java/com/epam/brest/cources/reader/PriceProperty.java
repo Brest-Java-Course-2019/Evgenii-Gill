@@ -4,21 +4,22 @@ import java.math.BigDecimal;
 
 public class PriceProperty {
 
-    final private BigDecimal weight;
-    final private BigDecimal distance;
-    final private BigDecimal price;
-    final private BigDecimal minprice;
-    final private BigDecimal midprice;
-    final private BigDecimal maxprice;
+    private BigDecimal weight;
+    private BigDecimal distance;
+    private BigDecimal price;
+    private BigDecimal minprice;
 
-    public PriceProperty(BigDecimal weight, BigDecimal distance, BigDecimal price, BigDecimal minprice, BigDecimal midprice, BigDecimal maxprice) {
+    public PriceProperty(final BigDecimal weight, final BigDecimal distance, final BigDecimal price, final BigDecimal minprice) {
         this.weight = weight;
         this.distance = distance;
         this.price = price;
         this.minprice = minprice;
-        this.midprice = midprice;
-        this.maxprice = maxprice;
     }
+
+    public PriceProperty() {
+
+    }
+
 
     public BigDecimal getWeight() {
         return weight;
@@ -36,14 +37,6 @@ public class PriceProperty {
         return minprice;
     }
 
-    public BigDecimal getMidprice() {
-        return midprice;
-    }
-
-    public BigDecimal getMaxprice() {
-        return maxprice;
-    }
-
     @Override
     public String toString() {
         return "PriceProperty{" +
@@ -51,8 +44,38 @@ public class PriceProperty {
                 ", distance=" + distance +
                 ", price=" + price +
                 ", minprice=" + minprice +
-                ", midprice=" + midprice +
-                ", maxprice=" + maxprice +
                 '}';
+    }
+
+    public static PricePropertyBuilder builder(){
+        return new PriceProperty(). new PricePropertyBuilder();
+    }
+
+    public class PricePropertyBuilder{
+
+        private PricePropertyBuilder(){}
+
+        public PricePropertyBuilder price(final BigDecimal price){
+            PriceProperty.this.price = price;
+            return this;
+        }
+
+        public PricePropertyBuilder distance(final BigDecimal distance){
+            PriceProperty.this.distance = distance;
+            return this;
+        }
+
+        public PricePropertyBuilder weight(final BigDecimal weight){
+            PriceProperty.this.weight = weight;
+            return this;
+        }
+
+        public PricePropertyBuilder minprice(final BigDecimal minprice){
+            PriceProperty.this.minprice = minprice;
+            return this;
+        }
+        public PriceProperty build(){
+            return PriceProperty.this;
+        }
     }
 }
