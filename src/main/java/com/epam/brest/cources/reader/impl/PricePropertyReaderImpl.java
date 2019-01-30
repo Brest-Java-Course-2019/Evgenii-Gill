@@ -1,48 +1,36 @@
 package com.epam.brest.cources.reader.impl;
 
-import com.epam.brest.cources.reader.exeption.PropertyReaderException;
-import com.epam.brest.cources.reader.PricePropertyReader;
 import com.epam.brest.cources.reader.PriceProperty;
+import com.epam.brest.cources.reader.PricePropertyReader;
+import com.epam.brest.cources.reader.exeption.PropertyReaderException;
 
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Properties;
 
 public class PricePropertyReaderImpl implements PricePropertyReader {
 
-    private static final String PATH = "resources/price.properties";
-    private static final String WEIGHT = "weight";
-   // private static final String MIN_WEIGHT = "min-weight";
+    private static final String PATH = "price.properties";
     private static final String PRICE = "price";
-    private static final String DISTANCE = "distance";
-    private static final String MIN_PRICE = "minprice";
+    private static final String MIN_PRICE = "min-price";
 
 
     @Override
     public PriceProperty getPropertiesPrice() throws PropertyReaderException {
         try {
             final Properties properties = new Properties();
-            final ClassLoader reader = getClass().getClassLoader();
-            File file = new File(reader.getResource(PATH).getFile());
-            properties.load(file);
+            final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            properties.load(classloader.getResourceAsStream("price.properties"));
 
-           // final BigDecimal minweight = getValueByKey(properties, MIN_WEIGHT);
-            final BigDecimal weight = getValueByKey(properties, WEIGHT);
-            final BigDecimal distance = getValueByKey(properties, DISTANCE);
             final BigDecimal price = getValueByKey(properties, PRICE);
-            final BigDecimal minprice = getValueByKey(properties, MIN_PRICE);
-
+            final BigDecimal minPrice = getValueByKey(properties, MIN_PRICE);
 
             return PriceProperty.builder()
-                    .minprice(minprice)
+                    .minPrice(minPrice)
                     .price(price)
-                    .distance(distance)
-                    .weight(weight)
                     .build();
 
-        } catch (final IOException e) {
-            final String errorMessage = "Failed to read file from path [" + this.getClass().getClassLoader().getResourceAsStream(PATH) + "]";
+        } catch (final Exception e) {
+            final String errorMessage = "Failed to read file from path [" + PATH + "]";
             throw new PropertyReaderException(errorMessage);
         }
     }
@@ -56,6 +44,7 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
             throw new PropertyReaderException("Failed to parse value [" + value + "] by key [" + key + "].");
         }
     }
+
 }
 
 
