@@ -35,7 +35,7 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
         }
     }
 
-    private static BigDecimal getValueByKey(final Properties properties, final String key) throws PropertyReaderException {
+    private static BigDecimal getValueByKey(final Properties properties, final String key) throws NumberFormatException {
         final String value = properties.getProperty(key);
 
         try {
