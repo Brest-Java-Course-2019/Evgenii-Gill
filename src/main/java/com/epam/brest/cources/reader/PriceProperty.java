@@ -1,5 +1,4 @@
 package com.epam.brest.cources.reader;
-
 import java.math.BigDecimal;
 
 public class PriceProperty {
