@@ -4,5 +4,5 @@ import com.epam.brest.cources.reader.exeption.PropertyReaderException;
 
 public interface PricePropertyReader {
 
-    PriceProperty getPropertiesPrice() throws PropertyReaderException;
+    PriceProperty getPropertiesPrice() throws NumberFormatException;
 }
