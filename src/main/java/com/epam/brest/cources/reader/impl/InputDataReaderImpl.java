@@ -24,7 +24,7 @@ public class InputDataReaderImpl implements InputDataReader {
                 .build();
     }
 
-    private static BigDecimal getValueWithName(final String name) throws NumberFormatException {
+    private static BigDecimal getValueWithName(final String name) throws InputDataReaderException {
         try {
             System.out.println("Please enter " + name + ":");
             return SCANNER.nextBigDecimal();
