@@ -14,9 +14,9 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
     private static final String PATH = "price.properties";
     private static final String PRICE = "price";
     private static final String MIN_PRICE = "min-price";
-    final String path;
+    private final String path;
 
-    public PricePropertyReaderImpl(String path) {
+    public PricePropertyReaderImpl(final String path) {
         this.path = path;
     }
 
@@ -39,16 +39,18 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
         }
     }
 
-    private static Properties getProperty(String path) {
-        final Properties properties = new Properties();
-
-        final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+    private static Properties getProperty(String path) throws PropertyReaderException {
         try {
+            final Properties properties = new Properties();
+
+            final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
             properties.load(classloader.getResourceAsStream(path));
-        } catch (IOException e) {
-            e.printStackTrace();
+            return properties;
+
+        } catch (final IOException e) {
+            final String errorMessage = "Failed to read file from path [" + PATH + "]";
+            throw new PropertyReaderException(errorMessage);
         }
-        return properties;
     }
 
 
