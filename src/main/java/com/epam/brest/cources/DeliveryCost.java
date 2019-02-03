@@ -21,7 +21,7 @@ public class DeliveryCost {
     public static void main(final String[] args) throws PropertyReaderException, InputDataReaderException {
         LOGGER.info("Logging an INFO-level message");
 
-        final PricePropertyReader propertyReader = new PricePropertyReaderImpl("path");
+        final PricePropertyReader propertyReader = new PricePropertyReaderImpl();
         final PriceProperty priceProperty = propertyReader.getPropertiesPrice();
 
         final InputDataReader inputDataReader = new InputDataReaderImpl();

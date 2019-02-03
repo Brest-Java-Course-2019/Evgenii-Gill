@@ -16,15 +16,20 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
     private static final String MIN_PRICE = "min-price";
     private final String path;
 
-    public PricePropertyReaderImpl(final String path) {
+
+    public PricePropertyReaderImpl(String path) {
         this.path = path;
+    }
+
+    public PricePropertyReaderImpl(){
+        this.path = PATH;
     }
 
     @Override
     public PriceProperty getPropertiesPrice() throws PropertyReaderException{
 
-        Properties properties = getProperty(PATH);
-        try {
+        Properties properties = getProperty(path);
+
             final BigDecimal price = getValueByKey(properties, PRICE);
             final BigDecimal minPrice = getValueByKey(properties, MIN_PRICE);
 
@@ -32,11 +37,6 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
                     .minPrice(minPrice)
                     .price(price)
                     .build();
-
-        } catch (final Exception e) {
-            final String errorMessage = "Failed to read file from path [" + PATH + "]";
-            throw new PropertyReaderException(errorMessage);
-        }
     }
 
     private static Properties getProperty(String path) throws PropertyReaderException {
