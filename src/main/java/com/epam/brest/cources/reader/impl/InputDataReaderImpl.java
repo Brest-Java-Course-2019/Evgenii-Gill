@@ -5,6 +5,7 @@ import com.epam.brest.cources.reader.InputDataReader;
 import com.epam.brest.cources.reader.exeption.InputDataReaderException;
 
 import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputDataReaderImpl implements InputDataReader {
@@ -28,7 +29,7 @@ public class InputDataReaderImpl implements InputDataReader {
         try {
             System.out.println("Please enter " + name + ":");
             return SCANNER.nextBigDecimal();
-        } catch (final Exception ex) {
+        } catch (final InputMismatchException ex) {
             throw new InputDataReaderException("Failed to get entered value with name [" + name + "].");
         }
     }

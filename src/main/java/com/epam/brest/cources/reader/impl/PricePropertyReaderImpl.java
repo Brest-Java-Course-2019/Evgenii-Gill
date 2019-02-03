@@ -4,7 +4,9 @@ import com.epam.brest.cources.reader.PriceProperty;
 import com.epam.brest.cources.reader.PricePropertyReader;
 import com.epam.brest.cources.reader.exeption.PropertyReaderException;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.InputMismatchException;
 import java.util.Properties;
 
 public class PricePropertyReaderImpl implements PricePropertyReader {
@@ -12,15 +14,17 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
     private static final String PATH = "price.properties";
     private static final String PRICE = "price";
     private static final String MIN_PRICE = "min-price";
+    final String path;
 
+    public PricePropertyReaderImpl(String path) {
+        this.path = path;
+    }
 
     @Override
-    public PriceProperty getPropertiesPrice() throws PropertyReaderException {
-        try {
-            final Properties properties = new Properties();
-            final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            properties.load(classloader.getResourceAsStream("price.properties"));
+    public PriceProperty getPropertiesPrice() throws PropertyReaderException{
 
+        Properties properties = getProperty(PATH);
+        try {
             final BigDecimal price = getValueByKey(properties, PRICE);
             final BigDecimal minPrice = getValueByKey(properties, MIN_PRICE);
 
@@ -35,16 +39,28 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
         }
     }
 
+    private static Properties getProperty(String path) {
+        final Properties properties = new Properties();
+
+        final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        try {
+            properties.load(classloader.getResourceAsStream(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
+
+
     private static BigDecimal getValueByKey(final Properties properties, final String key) throws PropertyReaderException {
         final String value = properties.getProperty(key);
 
         try {
             return new BigDecimal(value);
-        } catch (final NumberFormatException ex) {
+        } catch (final InputMismatchException ex) {
             throw new PropertyReaderException("Failed to parse value [" + value + "] by key [" + key + "].");
         }
     }
-
 }
 
 
