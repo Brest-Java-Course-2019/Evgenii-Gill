@@ -3,8 +3,6 @@ package com.epam.brest.cources.reader.impl;
 import com.epam.brest.cources.reader.PriceProperty;
 import com.epam.brest.cources.reader.PricePropertyReader;
 import com.epam.brest.cources.reader.exeption.PropertyReaderException;
-
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Properties;
@@ -16,8 +14,7 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
     private static final String MIN_PRICE = "min-price";
     private final String path;
 
-
-    public PricePropertyReaderImpl(String path) {
+    public PricePropertyReaderImpl(final String path) {
         this.path = path;
     }
 
@@ -28,18 +25,18 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
     @Override
     public PriceProperty getPropertiesPrice() throws PropertyReaderException{
 
-        Properties properties = getProperty(path);
+        final Properties properties = getProperty(path);
 
-            final BigDecimal price = getValueByKey(properties, PRICE);
-            final BigDecimal minPrice = getValueByKey(properties, MIN_PRICE);
+        final BigDecimal price = getValueByKey(properties, PRICE);
+        final BigDecimal minPrice = getValueByKey(properties, MIN_PRICE);
 
-            return PriceProperty.builder()
-                    .minPrice(minPrice)
-                    .price(price)
-                    .build();
+        return PriceProperty.builder()
+                .minPrice(minPrice)
+                .price(price)
+                .build();
     }
 
-    private static Properties getProperty(String path) throws PropertyReaderException {
+    private static Properties getProperty(final String path) throws PropertyReaderException {
         try {
             final Properties properties = new Properties();
 
@@ -47,12 +44,11 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
             properties.load(classloader.getResourceAsStream(path));
             return properties;
 
-        } catch (final IOException e) {
+        } catch (final Exception e) {
             final String errorMessage = "Failed to read file from path [" + PATH + "]";
             throw new PropertyReaderException(errorMessage);
         }
     }
-
 
     private static BigDecimal getValueByKey(final Properties properties, final String key) throws PropertyReaderException {
         final String value = properties.getProperty(key);
@@ -64,5 +60,3 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
         }
     }
 }
-
-

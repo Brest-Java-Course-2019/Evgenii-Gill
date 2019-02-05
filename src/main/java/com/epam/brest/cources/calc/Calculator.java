@@ -7,5 +7,4 @@ import java.math.BigDecimal;
 public interface Calculator {
 
     BigDecimal calculatePrice(InputData inputData);
-
 }

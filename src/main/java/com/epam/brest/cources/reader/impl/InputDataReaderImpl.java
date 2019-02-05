@@ -33,5 +33,4 @@ public class InputDataReaderImpl implements InputDataReader {
             throw new InputDataReaderException("Failed to get entered value with name [" + name + "].");
         }
     }
-
 }

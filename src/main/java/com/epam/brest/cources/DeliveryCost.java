@@ -32,7 +32,6 @@ public class DeliveryCost {
 
         System.out.println("Total Price of delivery: " + totalPrice + "$.");
     }
-
 }
 
 

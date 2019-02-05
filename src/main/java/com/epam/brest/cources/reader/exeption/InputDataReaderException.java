@@ -5,5 +5,4 @@ public class InputDataReaderException extends Exception {
     public InputDataReaderException(final String message) {
         super(message);
     }
-
 }
