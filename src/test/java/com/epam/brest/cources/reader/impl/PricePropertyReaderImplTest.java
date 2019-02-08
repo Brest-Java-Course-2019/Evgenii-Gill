@@ -36,8 +36,7 @@ class PricePropertyReaderImplTest {
         Assertions.assertThrows(PropertyReaderException.class, () -> {
             reader.getPropertiesPrice();
         });
-
-        }
+    }
 
     @Test
     public void setPath() {
@@ -47,4 +46,4 @@ class PricePropertyReaderImplTest {
             reader.getPropertiesPrice();
         });
     }
-    }
+}
