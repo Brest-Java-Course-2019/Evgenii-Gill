@@ -6,12 +6,12 @@ public class PriceProperty {
     private BigDecimal price;
     private BigDecimal minPrice;
 
+   private PriceProperty(){
+
+   }
     public PriceProperty(final BigDecimal price, final BigDecimal minPrice) {
         this.price = price;
         this.minPrice = minPrice;
-    }
-
-    private PriceProperty() {
     }
 
     public BigDecimal getPrice() {

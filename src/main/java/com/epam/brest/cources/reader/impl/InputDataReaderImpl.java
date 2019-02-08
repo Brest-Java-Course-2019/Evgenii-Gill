@@ -12,7 +12,7 @@ public class InputDataReaderImpl implements InputDataReader {
 
     private static final String DISTANCE = "distance (km)";
     private static final String WEIGHT = "weight (kg)";
-    private static final Scanner SCANNER = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in, "UTF-8");
 
     @Override
     public InputData getInputData() throws InputDataReaderException {
