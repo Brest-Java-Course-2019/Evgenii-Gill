@@ -3,12 +3,22 @@ package com.epam.brest.cources.calc.impl;
 import com.epam.brest.cources.calc.Calculator;
 import com.epam.brest.cources.reader.InputData;
 import com.epam.brest.cources.reader.PriceProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
 public class CalculatorImpl implements Calculator {
 
-    private final PriceProperty property;
+    @Autowired
+    private PriceProperty property;
+
+    public PriceProperty getProperty() {
+        return property;
+    }
+
+    public CalculatorImpl() {
+
+    }
 
     public CalculatorImpl(final PriceProperty property) {
         this.property = property;

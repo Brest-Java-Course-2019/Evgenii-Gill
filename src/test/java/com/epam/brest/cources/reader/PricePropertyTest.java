@@ -12,19 +12,30 @@ class PricePropertyTest {
     private final static BigDecimal PRICE = new BigDecimal(2);
     private final static BigDecimal MIN_PRICE = new BigDecimal(5);
 
+    private final static PriceProperty result = PriceProperty.builder()
+            .price(PRICE)
+            .minPrice(MIN_PRICE)
+            .build();
+
     @Test
     void getPrice() throws PropertyReaderException {
 
         final PricePropertyReaderImpl reader = new PricePropertyReaderImpl(PATH);
         final PriceProperty property = reader.getPropertiesPrice();
 
-          final BigDecimal actualResultPrice = property.getPrice();
-          final BigDecimal actualResultMinPrice = property.getMinPrice();
+        final String actualResultString = property.toString();
+        final String expectedResultString = result.toString();
 
-          final BigDecimal expectedResultPrice = PRICE;
-          final BigDecimal expectedResultMinPrice = MIN_PRICE;
+        final BigDecimal actualResultPrice = property.getPrice();
+        final BigDecimal actualResultMinPrice = property.getMinPrice();
 
-    Assertions.assertEquals(actualResultPrice,expectedResultPrice, "Price - Unexpected result");
-    Assertions.assertEquals(actualResultMinPrice,expectedResultMinPrice, "Min - Unexpected result");
+
+        final BigDecimal expectedResultPrice = PRICE;
+        final BigDecimal expectedResultMinPrice = MIN_PRICE;
+
+
+        Assertions.assertEquals(actualResultPrice, expectedResultPrice, "Price - Unexpected result");
+        Assertions.assertEquals(actualResultMinPrice, expectedResultMinPrice, "Min - Unexpected result");
+        Assertions.assertEquals(actualResultString, expectedResultString);
     }
 }

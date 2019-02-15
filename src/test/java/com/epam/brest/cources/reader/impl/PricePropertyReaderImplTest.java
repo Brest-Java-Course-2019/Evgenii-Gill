@@ -37,5 +37,4 @@ class PricePropertyReaderImplTest {
             reader.getPropertiesPrice();
         });
     }
-    }
-
+}
