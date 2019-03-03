@@ -1,14 +1,22 @@
 package com.epam.brest.cources.reader;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 
+@Component
 public class PriceProperty {
 
     private BigDecimal price;
     private BigDecimal minPrice;
 
-   private PriceProperty(){
 
-   }
+    private PriceProperty() {
+
+    }
+
+    @Autowired
     public PriceProperty(final BigDecimal price, final BigDecimal minPrice) {
         this.price = price;
         this.minPrice = minPrice;

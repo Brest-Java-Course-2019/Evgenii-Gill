@@ -12,7 +12,7 @@ import com.epam.brest.cources.reader.exeption.PropertyReaderException;
 import com.epam.brest.cources.reader.impl.InputDataReaderImpl;
 import com.epam.brest.cources.reader.impl.PricePropertyReaderImpl;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.math.BigDecimal;
 import java.util.logging.Logger;
@@ -21,10 +21,11 @@ public class DeliveryCost {
     private static final Logger LOGGER = Logger.getLogger("InfoLogging");
 
     public static void main(final String[] args) throws PropertyReaderException, InputDataReaderException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("calc.xml");
-        Calculator calculator = (Calculator)context.getBean("calc");
-
         LOGGER.info("Logging an INFO-level message");
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.epam.brest.cources");
+
+        Calculator calculator = (Calculator) context.getBean("com.epam.brest.cources");
+
 
         final PricePropertyReader propertyReader = new PricePropertyReaderImpl();
         final PriceProperty priceProperty = propertyReader.getPropertiesPrice();
@@ -32,7 +33,7 @@ public class DeliveryCost {
         final InputDataReader inputDataReader = new InputDataReaderImpl();
         final InputData inputData = inputDataReader.getInputData();
 
-       // final Calculator calculator = new CalculatorImpl(priceProperty);
+        //  final Calculator calculator = new CalculatorImpl(priceProperty);
         final BigDecimal totalPrice = calculator.calculatePrice(inputData);
         System.out.println("Total Price of delivery: " + totalPrice + "$.");
     }

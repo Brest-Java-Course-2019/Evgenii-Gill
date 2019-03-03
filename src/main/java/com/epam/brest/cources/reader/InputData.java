@@ -1,7 +1,11 @@
 package com.epam.brest.cources.reader;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 
+@Component
 public class InputData {
 
     private BigDecimal distance;
@@ -23,6 +27,7 @@ public class InputData {
                 '}';
     }
 
+    @Autowired
     public InputData(final BigDecimal distance, final BigDecimal weight) {
         this.distance = distance;
         this.weight = weight;

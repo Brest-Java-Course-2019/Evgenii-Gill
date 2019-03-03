@@ -3,10 +3,13 @@ package com.epam.brest.cources.reader.impl;
 import com.epam.brest.cources.reader.PriceProperty;
 import com.epam.brest.cources.reader.PricePropertyReader;
 import com.epam.brest.cources.reader.exeption.PropertyReaderException;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Properties;
-
+@Component
 public class PricePropertyReaderImpl implements PricePropertyReader {
 
     private static final String PATH = "price.properties";
@@ -23,6 +26,7 @@ public class PricePropertyReaderImpl implements PricePropertyReader {
     }
 
     @Override
+    @Bean
     public PriceProperty getPropertiesPrice() throws PropertyReaderException{
 
         final Properties properties = getProperty(path);
