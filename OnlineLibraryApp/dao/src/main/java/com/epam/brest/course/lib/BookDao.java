@@ -1,7 +1,6 @@
 package com.epam.brest.course.lib;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -36,14 +35,11 @@ public interface BookDao {
     Book getBookByTitleAndReleaseDate(String bookTitle, Date releaseDate);
 
     /**
-     * Get list of all book
-     * with a date filter.
+     * Get all book list written by this author.
      *
-     * @param fromDate start date.
-     * @param toDate   finish date.
-     * @return list of book.
+     * @return all book list created by this author.
      */
-    List<Book> getAllBookWithDateFilter(Date fromDate, Date toDate);
+    Book getAllBooksWrittenByAuthor(Integer authorId);
 
     /**
      * Adds the book to the database and returns
