@@ -7,9 +7,9 @@
 # BlueJ files
 *.ctxt
 
-# IntellijIdea files 
-*.iml 
-.idea 
+# IntellijIdea files
+*.iml
+.idea
 out
 target
 
