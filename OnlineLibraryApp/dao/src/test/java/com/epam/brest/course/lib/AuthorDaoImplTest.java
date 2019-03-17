@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = {"classpath:dao.xml", "classpath:dao-test.xml"})
+@ContextConfiguration(locations = {"classpath:dao.xml", "classpath:dao-test.xml", "classpath:test-db.xml"})
 @Rollback
 @Transactional
 class AuthorDaoImplTest {
