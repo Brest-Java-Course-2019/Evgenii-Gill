@@ -10,7 +10,7 @@ INSERT INTO book (bookTitle, releaseDate, bookAuthorId)
 VALUES
   ('Harry Potter and the Philosopher.s Stone', '1997-06-26', 1),
   ('Harry Potter and the Chamber of Secrets', '1998-06-02', 1),
-  ('Harry Potter and the Prisoner of Azkaban', '1999-06-08', 1),
+  ('Harry Potter and the Prisoner of Azkaban', '1999-07-08', 1),
   ('Hamlet', '1567-06-22', 4),
   ('Macbeth', '1564-10-02', 4),
   ('Romeo and Juliet ', '1576-06-08', 4),
