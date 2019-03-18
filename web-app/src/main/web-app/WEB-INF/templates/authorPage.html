@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>Authors</title>
+
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap-theme.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/pages/css/custom.css}">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top bg-inverse">
+
+        <a class="navbar-brand" href="#" th:href="@{/books}">
+            <span class="hidden-folded inline">Books</span>
+        </a>
+        <a class="navbar-brand" href="#" th:href="@{/authors}">
+            <span class="hidden-folded inline">Authors</span>
+        </a>
+
+    </nav>
+
+    <h2>Authors</h2>
+
+    <p>
+        <a href="#" th:href="@{/author/add}">Add New</a>
+    </p>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+        <tr th:each="author : ${authorList}">
+            <td th:text="${author.firstName}">First name</td>
+            <td th:text="${author.lastName}">Last name</td>
+            <td>
+
+                <a href="#" th:href="@{/author/edit(authorId=${author.authorId})}">Edit</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" th:href="@{/author/details(authorId=${author.authorId})}">Details</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="#" th:href="@{/author/delete(authorId=${author.authorId})}">Delete</a>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

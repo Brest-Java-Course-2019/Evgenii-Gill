@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Delete author</title>
+
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap-theme.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/pages/css/custom.css}">
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+
+    <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top bg-inverse">
+
+        <a class="navbar-brand" href="#" th:href="@{/books}">
+            <span class="hidden-folded inline">Books</span>
+        </a>
+        <a class="navbar-brand" href="#" th:href="@{/authors}">
+            <span class="hidden-folded inline">Authors</span>
+        </a>
+    </nav>
+
+    <h2>Delete</h2>
+
+    <h4>&nbsp;&nbsp;If you really want to remove this author, you must first delete all the books associated with him</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            First Name:
+        </dt>
+        <dd th:text="${author.firstName}">
+            Joanne
+        </dd>
+
+        <dt>
+            Last Name:
+        </dt>
+        <dd th:text="${author.lastName}">
+            Rowling
+        </dd>
+
+        <dd>
+            <hr/>
+            <h4>List of books written by:</h4>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Book title</th>
+                    <th>Release Date</th>
+                </tr>
+                </thead>
+                <tbody th:remove="all-but-first">
+                <tr th:each="book : ${booksList}">
+                    <td th:text="${book.bookTitle}">Book title</td>
+                    <td th:text="${book.releaseDate}">1997-06-26</td>
+                    <td>
+                        <a href="#" th:href="@{/book/delete(bookId=${book.mbookId})}">Delete</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </dd>
+    </dl>
+
+    <p>
+        <strong>
+            <a href="/authors">Back to List</a>
+        </strong>
+    </p>
+
+</div>
+
+</body>
+</html>
