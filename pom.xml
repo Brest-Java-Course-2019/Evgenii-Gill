@@ -63,6 +63,11 @@
             </dependency>
             <dependency>
                 <groupId>com.epam.brest.course.lib</groupId>
+                <artifactId>web-app</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.epam.brest.course.lib</groupId>
                 <artifactId>service</artifactId>
                 <version>${project.version}</version>
             </dependency>
