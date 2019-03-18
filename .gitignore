@@ -8,9 +8,10 @@
 *.ctxt
 
 # IntellijIdea files 
-*.iml 
-.idea 
-out
+
+*.iml
+.idea/
+/out/
 target
 
 
