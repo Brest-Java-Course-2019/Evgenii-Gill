@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>Delete director</title>
+
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap-theme.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/pages/css/custom.css}">
+</head>
+<body>
+<div class="container-fluid">
+
+    <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top bg-inverse">
+
+        <a class="navbar-brand" href="#" th:href="@{/books}">
+            <span class="hidden-folded inline">Books</span>
+        </a>
+        <a class="navbar-brand" href="#" th:href="@{/authors}">
+            <span class="hidden-folded inline">Authors</span>
+        </a>
+    </nav>
+
+    <h2>Delete</h2>
+
+    <h4>&nbsp;&nbsp;Do you really want to delete this author?</h4>
+    <hr/>
+
+    <dl class="dl-horizontal">
+        <dt>
+            First Name:
+        </dt>
+        <dd th:text="${author.firstName}">
+            Joanne
+        </dd>
+        <dt>
+            Last Name:
+        </dt>
+        <dd th:text="${author.lastName}">
+            Rowling
+        </dd>
+    </dl>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            <strong>
+                <a href="#" th:href="@{/authors}">Back to List</a>
+            </strong>
+        </dt>
+        <dd>
+            <form action="#" th:action="@{/author/delete}" th:object="${author}" method="post">
+                <input type="hidden" th:field="*{authorId}"/>
+                <div class="form-group">
+                    <input type="submit" value="Delete"/>
+                </div>
+            </form>
+        </dd>
+    </dl>
+</div>
+</body>
+</html>
