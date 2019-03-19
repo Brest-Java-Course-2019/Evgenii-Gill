@@ -11,7 +11,7 @@ public interface BookService {
     /**
      * Find all books stream.
      *
-     * @return books .
+     * @return books.
      */
 
     Stream<Book> findAll();
@@ -20,7 +20,7 @@ public interface BookService {
      * Find book by Id from database.
      *
      * @param bookId
-     * @return Book
+     * @return book
      */
     Book findById(Integer bookId);
 

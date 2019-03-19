@@ -11,7 +11,7 @@ public interface AuthorService {
     /**
      * Find all authors stream.
      *
-     * @return authors .
+     * @return authors.
      */
 
     Stream<Author> findAll();
@@ -20,7 +20,7 @@ public interface AuthorService {
      * Find author by Id from database.
      *
      * @param authorId
-     * @return Author
+     * @return author
      */
     Author findById(Integer authorId);
 
