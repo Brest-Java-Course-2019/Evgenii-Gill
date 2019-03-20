@@ -1,4 +1,4 @@
-package com.epam.brest.course.lib;
+package com.epam.brest.course.dao;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

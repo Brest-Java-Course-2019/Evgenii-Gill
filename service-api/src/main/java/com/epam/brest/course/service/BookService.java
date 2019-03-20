@@ -1,5 +1,8 @@
-import com.epam.brest.course.lib.Book;
+package com.epam.brest.course.service;
 
+import com.epam.brest.course.dao.Book;
+
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -30,7 +33,7 @@ public interface BookService {
      * @param book new book
      * @return book with id
      */
-    Book addBook(Book book);
+    Optional<Book> addBook(Book book);
 
     /**
      * Update book in database.

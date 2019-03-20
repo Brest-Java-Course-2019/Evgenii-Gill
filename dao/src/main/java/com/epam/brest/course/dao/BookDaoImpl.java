@@ -1,4 +1,4 @@
-package com.epam.brest.course.lib;
+package com.epam.brest.course.dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

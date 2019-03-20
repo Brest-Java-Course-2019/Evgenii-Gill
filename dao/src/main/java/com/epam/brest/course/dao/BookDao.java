@@ -1,4 +1,4 @@
-package com.epam.brest.course.lib;
+package com.epam.brest.course.dao;
 
 import java.util.Date;
 import java.util.Optional;

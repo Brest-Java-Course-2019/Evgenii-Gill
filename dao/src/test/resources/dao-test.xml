@@ -16,15 +16,15 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="authorDao" class="com.epam.brest.course.lib.AuthorDaoImpl">
+    <bean id="authorDao" class="com.epam.brest.course.dao.AuthorDaoImpl">
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 
-    <bean id="bookDao" class="com.epam.brest.course.lib.BookDaoImpl">
+    <bean id="bookDao" class="com.epam.brest.course.dao.BookDaoImpl">
         <constructor-arg ref="namedParameterJdbcTemplate"/>
     </bean>
 
-    <context:component-scan base-package="com.epam.brest.course.lib"/>
+    <context:component-scan base-package="com.epam.brest.course.dao"/>
 
     <jdbc:embedded-database id="dataSource"/>
 </beans>

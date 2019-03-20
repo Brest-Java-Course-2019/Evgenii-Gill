@@ -1,5 +1,8 @@
-import com.epam.brest.course.lib.Author;
+package com.epam.brest.course.service;
 
+import com.epam.brest.course.dao.Author;
+
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -30,7 +33,7 @@ public interface AuthorService {
      * @param author new author
      * @return author with id
      */
-    Author addAuthor(Author author);
+    Optional<Author> addAuthor(Author author);
 
     /**
      * Update author in database.

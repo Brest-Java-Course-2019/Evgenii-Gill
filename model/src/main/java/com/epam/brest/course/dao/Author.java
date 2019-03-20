@@ -1,4 +1,4 @@
-package com.epam.brest.course.lib;
+package com.epam.brest.course.dao;
 
 /**
  * The {@code Author} - this is one of the entities in project.

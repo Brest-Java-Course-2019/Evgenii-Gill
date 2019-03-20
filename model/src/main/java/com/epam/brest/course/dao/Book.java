@@ -1,4 +1,4 @@
-package com.epam.brest.course.lib;
+package com.epam.brest.course.dao;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

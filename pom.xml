@@ -16,7 +16,7 @@
         <module>dao</module>
         <module>web-app</module>
         <module>test-spring-db</module>
-        <module>service</module>
+        <module>service-api</module>
     </modules>
 
     <distributionManagement>
@@ -69,7 +69,7 @@
             </dependency>
             <dependency>
                 <groupId>com.epam.brest.course.lib</groupId>
-                <artifactId>service</artifactId>
+                <artifactId>service-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
