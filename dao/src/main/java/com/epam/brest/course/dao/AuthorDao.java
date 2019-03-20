@@ -57,4 +57,5 @@ public interface AuthorDao {
      * @param authorId is author's ID.
      */
     void deleteAuthor(int authorId);
+
 }
