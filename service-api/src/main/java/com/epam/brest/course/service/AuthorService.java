@@ -48,4 +48,5 @@ public interface AuthorService {
      * @param authorId author id
      */
     void deleteAuthor(Integer authorId);
+
 }

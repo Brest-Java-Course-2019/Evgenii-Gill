@@ -43,9 +43,11 @@ public class BookServiceImpl implements BookService {
         bookDao.updateBook(book);
     }
 
+
     @Override
     public void deleteBook(Integer bookId) {
         LOGGER.debug("deleteBook({})", bookId);
         bookDao.deleteBook(bookId);
     }
+
 }

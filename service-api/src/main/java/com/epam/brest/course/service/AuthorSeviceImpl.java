@@ -48,4 +48,5 @@ public class AuthorSeviceImpl implements AuthorService {
         LOGGER.debug("delete({})", authorId);
         authorDao.deleteAuthor(authorId);
     }
+
 }

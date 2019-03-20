@@ -50,6 +50,7 @@
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
     </properties>
 
+
     <dependencyManagement>
         <dependencies>
             <dependency>
