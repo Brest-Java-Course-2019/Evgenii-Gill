@@ -4,14 +4,27 @@ import com.epam.brest.course.dao.Author;
 import com.epam.brest.course.dao.AuthorDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * AuthorServiceImpl.
+ */
+@Service
 public class AuthorSeviceImpl implements AuthorService {
 
+    /**
+     * Logger init.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorSeviceImpl.class);
 
+    /**
+     * Property authorDao.
+     */
+    @Autowired
     private AuthorDao authorDao;
 
     public AuthorSeviceImpl(AuthorDao authorDao) {
@@ -48,5 +61,4 @@ public class AuthorSeviceImpl implements AuthorService {
         LOGGER.debug("delete({})", authorId);
         authorDao.deleteAuthor(authorId);
     }
-
 }

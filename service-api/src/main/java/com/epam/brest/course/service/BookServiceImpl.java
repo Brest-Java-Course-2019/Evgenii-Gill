@@ -4,14 +4,27 @@ import com.epam.brest.course.dao.Book;
 import com.epam.brest.course.dao.BookDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * BookServiceImpl.
+ */
+@Service
 public class BookServiceImpl implements BookService {
 
+    /**
+     * Logger init.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(BookServiceImpl.class);
 
+    /**
+     * Property bookDao.
+     */
+    @Autowired
     BookDao bookDao;
 
     public BookServiceImpl(BookDao bookDao) {
@@ -49,5 +62,4 @@ public class BookServiceImpl implements BookService {
         LOGGER.debug("deleteBook({})", bookId);
         bookDao.deleteBook(bookId);
     }
-
 }
