@@ -14,12 +14,12 @@ import java.util.stream.Stream;
  * AuthorServiceImpl.
  */
 @Service
-public class AuthorSeviceImpl implements AuthorService {
+public class AuthorServiceImpl implements AuthorService {
 
     /**
      * Logger init.
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorSeviceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorServiceImpl.class);
 
     /**
      * Property authorDao.
@@ -27,7 +27,7 @@ public class AuthorSeviceImpl implements AuthorService {
     @Autowired
     private AuthorDao authorDao;
 
-    public AuthorSeviceImpl(AuthorDao authorDao) {
+    public AuthorServiceImpl(AuthorDao authorDao) {
         this.authorDao = authorDao;
     }
 
