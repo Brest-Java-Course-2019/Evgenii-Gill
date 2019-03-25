@@ -30,17 +30,9 @@
         </dependency>
         <dependency>
             <groupId>com.epam.brest.course.lib</groupId>
-            <artifactId>test-db</artifactId>
+            <artifactId>test-spring-db</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.easymock</groupId>
-            <artifactId>easymock</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-
+       
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -83,6 +75,4 @@
             <artifactId>mockito-core</artifactId>
         </dependency>
     </dependencies>
-
-
 </project>
