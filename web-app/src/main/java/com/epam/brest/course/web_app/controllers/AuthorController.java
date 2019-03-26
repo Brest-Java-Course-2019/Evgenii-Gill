@@ -30,7 +30,7 @@ public class AuthorController {
     AuthorService authorService;
 
     /**
-     * Goto authors list page.
+     * Show authors page.
      *
      * @return view name
      */
@@ -43,16 +43,18 @@ public class AuthorController {
     }
 
     /**
-     * Goto edit author page.
+     * Show author add page.
      *
-     * @return view name
+     * @param model Model
+     * @return view name.
      */
-    @GetMapping(value = "/author/{id}")
-    public final String gotoEditAuthorPage(@PathVariable Integer id, Model model) {
+    @GetMapping(value = "/author")
+    public final String gotoAddAuthorPage(final Model model) {
 
-        LOGGER.debug("gotoEditAuthorPage({},{})", id, model);
-        Author author = authorService.findById(id);
-        model.addAttribute("author", author);
+        LOGGER.debug("gotoAddAuthorPage({})", model);
+        boolean isEdit = false;
+        model.addAttribute("isEdit", isEdit);
+        model.addAttribute("author", new Author());
         return "author";
     }
 
@@ -66,8 +68,8 @@ public class AuthorController {
      */
     @PostMapping(value = "/author")
     public final String addAuthor(@Valid final Author author,
-                               final BindingResult result,
-                               final Model model) {
+                                  final BindingResult result,
+                                  final Model model) {
         LOGGER.debug("addAuthor({})", author);
 
         if (result.hasErrors()) {
@@ -79,6 +81,20 @@ public class AuthorController {
             LOGGER.debug("addAuthor({})", resultAuthor);
             return "redirect:/authors";
         }
+    }
+
+    /**
+     * Show edit author page.
+     *
+     * @return view name
+     */
+    @GetMapping(value = "/author/{id}")
+    public final String gotoEditAuthorPage(@PathVariable final Integer id, final Model model) {
+
+        LOGGER.debug("gotoEditAuthorPage({},{})", id, model);
+        Author author = authorService.findById(id);
+        model.addAttribute("author", author);
+        return "author";
     }
 
     /**
