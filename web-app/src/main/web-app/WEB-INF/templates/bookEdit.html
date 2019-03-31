@@ -6,11 +6,15 @@
 
     <title>Edit book</title>
 
-    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap.min.css}">
-    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/bootstrap/bootstrap-theme.min.css}">
-    <link rel="stylesheet" href="#" th:href="@{/resources/static/assets/pages/css/custom.css}">
-
-    <script type="text/javascript" th:src="@{/resources/static/assets/bootstrap/bootstrap.min.js}"></script>
+    <link rel="stylesheet"
+          href="../../resources/static/css/font-awesome.min.css"
+          th:href="@{/resources/static/css/font-awesome.min.css}">
+    <link rel="stylesheet"
+          href="../../resources/static/css/bootstrap.css"
+          th:href="@{/resources/static/css/bootstrap.css}">
+    <link rel="stylesheet"
+          href="../../resources/static/css/style.css"
+          th:href="@{/resources/static/css/style.css}">
 
 </head>
 
@@ -27,7 +31,7 @@
         </a>
     </nav>
 
-    <h2>Edit book</h2>
+    <h3>Edit book</h3>
 <hr/>
 
      <form class="form-horizontal" id="bookForm" th:object="${book}" action="#" th:action="@{/book/edit}" method="post">

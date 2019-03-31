@@ -53,7 +53,7 @@
         <constructor-arg ref="authorDao"/>
     </bean>
 
-    <context:property-placeholder location="classpath:application.properties"/>
+    <context:property-placeholder location="classpath: application.properties"/>
 
     <!-- Thymeleaf Template Resolver -->
     <bean id="templateResolver"
