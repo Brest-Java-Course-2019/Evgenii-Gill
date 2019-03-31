@@ -22,14 +22,23 @@
 
 <div class="container-fluid">
 
-    <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top bg-inverse">
-
-        <a class="navbar-brand" href="#" th:href="@{/books}">
-            <span class="hidden-folded inline">Books</span>
-        </a>
-        <a class="navbar-brand" href="#" th:href="@{/authors}">
-            <span class="hidden-folded inline">Authors</span>
-        </a>
+    <nav class="pl-sm-2 navbar navbar-expand-sm navbar-dark bg-dark text-light  p-0">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="/" class="navbar-brand"><img src="../../resources/static/img/logoAuthor.svg"
+                                              th:src="@{/resources/static/img/logoAuthor.svg}"
+                                              height="32" width="32"></a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <a class="navbar-brand" href="#" th:href="@{/books}">
+                    <span class="hidden-folded inline">Books</span>
+                </a>
+                <a class="navbar-brand" href="#" th:href="@{/authors}">
+                    <span class="hidden-folded inline">Authors</span>
+                </a>
+            </ul>
+        </div>
     </nav>
     <h2>Edit author</h2>
     <hr/>
