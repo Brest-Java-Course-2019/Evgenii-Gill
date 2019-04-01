@@ -1,6 +1,7 @@
 package com.epam.brest.course.dao;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -39,7 +40,7 @@ public interface BookDao {
      *
      * @return all book list created by this author.
      */
-    Book getAllBooksWrittenByAuthor(Integer authorId);
+    List<Book> getAllBooksWrittenByAuthor(Integer authorId);
 
     /**
      * Adds the book to the database and returns

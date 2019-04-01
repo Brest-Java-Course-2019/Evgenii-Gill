@@ -10,11 +10,13 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Stream;
 
+@Repository
 public class BookDaoImpl implements BookDao {
 
     /**
@@ -22,42 +24,42 @@ public class BookDaoImpl implements BookDao {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(BookDaoImpl.class);
 
-    /**
-     * NamedParameterJdbcTemplate.
-     */
-    @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
     private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
-    private final static String BOOK_ID = "bookId";
-    private final static String BOOK_TITLE = "bookTitle";
+    private static final String BOOK_ID = "bookId";
+    private static final String BOOK_TITLE = "bookTitle";
     private static final String RELEASE_DATE = "releaseDate";
     private static final String BOOK_AUTHOR_ID = "bookAuthorId";
 
-    public BookDaoImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    /**
+     * NamedParameterJdbcTemplate.
+     */
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Autowired
+    public BookDaoImpl(final NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     @Value("${selectAllBooks}")
-    String selectAllBooksSQL;
+    private String selectAllBooksSQL;
 
     @Value("${updateBook}")
-    String updateBookSQL;
+    private String updateBookSQL;
 
     @Value("${deleteBook}")
-    String deleteBookSQL;
+    private String deleteBookSQL;
 
     @Value("${selectBooksWrittenByAuthor}")
-    String selectBooksWrittenByAuthorSQL;
+    private String selectBooksWrittenByAuthorSQL;
 
     @Value("${insertBook}")
-    String insertBookSQL;
+    private String insertBookSQL;
 
     @Value("${selectBookByTitleAndReleaseDate}")
-    String selectBookByTitleAndReleaseDateSQL;
+    private String selectBookByTitleAndReleaseDateSQL;
 
     @Value("${selectBookById}")
-    String selectBookByIdSQL;
+    private String selectBookByIdSQL;
 
     @Override
     public Stream<Book> findAll() {
@@ -88,11 +90,11 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public Book getAllBooksWrittenByAuthor(Integer authorId) {
+    public List<Book> getAllBooksWrittenByAuthor(Integer authorId) {
         LOGGER.debug("getAllBooksWrittenByAuthor({})", authorId);
         Map<String, Object> map = new HashMap<>();
         map.put(BOOK_AUTHOR_ID, authorId);
-        return namedParameterJdbcTemplate.queryForObject(selectBooksWrittenByAuthorSQL, map,
+        return namedParameterJdbcTemplate.query(selectBooksWrittenByAuthorSQL, map,
                 BeanPropertyRowMapper.newInstance(Book.class));
     }
 
@@ -106,12 +108,14 @@ public class BookDaoImpl implements BookDao {
         parameterSource.addValue(RELEASE_DATE, book.getReleaseDate());
         parameterSource.addValue(BOOK_AUTHOR_ID, book.getBookAuthorId());
         namedParameterJdbcTemplate.update(insertBookSQL, parameterSource, keyHolder);
+        book.setBookId(keyHolder.getKey().intValue());
         return Optional.of(book);
     }
 
     @Override
     public void updateBook(Book book) {
         LOGGER.debug("updateBook({})", book);
+
         Optional.of(namedParameterJdbcTemplate.update(updateBookSQL, new BeanPropertySqlParameterSource(book)))
                 .filter(this::successfullyUpdated)
                 .orElseThrow(() -> new RuntimeException("Failed to update book in DB"));

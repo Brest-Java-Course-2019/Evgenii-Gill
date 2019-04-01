@@ -24,34 +24,33 @@ public class AuthorDaoImpl implements AuthorDao {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorDaoImpl.class);
 
+    private final static String AUTHOR_ID = "authorId";
+    private final static String FIRST_NAME = "firstName";
+    private final static String LAST_NAME = "lastName";
 
     /**
      * NamedParameterJdbcTemplate.
      */
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-    private final static String AUTHOR_ID = "authorId";
-    private final static String FIRST_NAME = "firstName";
-    private final static String LAST_NAME = "lastName";
+    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Value("${selectAllAuthors}")
-    String selectAllAuthorsSQL;
+    private String selectAllAuthorsSQL;
 
     @Value("${selectAuthorById}")
-    String selectAuthorByIdSQL;
+    private String selectAuthorByIdSQL;
 
     @Value("${selectAuthorByFirstAndLastName}")
-    String selectAuthorByFirstAndLastNameSQL;
+    private String selectAuthorByFirstAndLastNameSQL;
 
     @Value("${insertAuthor}")
-    String insertAuthorSQL;
+    private String insertAuthorSQL;
 
     @Value("${updateAuthor}")
-    String updateAuthorSQL;
+    private String updateAuthorSQL;
 
     @Value("${deleteAuthor}")
-    String deleteAuthorSQL;
+    private String deleteAuthorSQL;
 
     public AuthorDaoImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
