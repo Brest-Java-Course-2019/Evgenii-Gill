@@ -61,43 +61,11 @@ class AuthorDaoImplTest {
         author.setFirstName(NEW_AUTHOR_FIRST_NAME);
         author.setLastName(NEW_AUTHOR_LAST_NAME);
         Author newAuthor = authorDao.addAuthor(author).get();
-       // assertNotNull(newAuthor.getAuthorId());
+        // assertNotNull(newAuthor.getAuthorId());
 
         Stream<Author> authorAfterInsert = authorDao.findAll();
 
         assertEquals(1, authorAfterInsert.count() - authorBeforeInsert.count());
     }
 
-    @Test
-    public void updateAuthor() {
-        Author author = new Author();
-        author.setFirstName(NEW_AUTHOR_FIRST_NAME);
-        author.setLastName(NEW_AUTHOR_LAST_NAME);
-        Author newAuthor = authorDao.addAuthor(author).get();
-        assertNotNull(newAuthor.getAuthorId());
-
-        author.setFirstName(NEW_AUTHOR_FIRST_NAME + "_2");
-        author.setLastName(NEW_AUTHOR_LAST_NAME + "_2");
-        authorDao.updateAuthor(author);
-
-        Author updatedAuthor = authorDao.findById(author.getAuthorId()).get();
-
-        assertEquals(NEW_AUTHOR_FIRST_NAME + "2", updatedAuthor.getFirstName());
-        assertEquals(NEW_AUTHOR_LAST_NAME + "2", updatedAuthor.getLastName());
-    }
-
-    @Test
-    public void deleteAuthor() {
-        Author author = new Author();
-
-        author.setFirstName(NEW_AUTHOR_FIRST_NAME);
-        author.setLastName(NEW_AUTHOR_LAST_NAME);
-
-        Author newAuthor = authorDao.addAuthor(author).get();
-       assertNotNull(newAuthor.getAuthorId());
-
-        authorDao.deleteAuthor(newAuthor.getAuthorId());
-
-        Assertions.assertThrows(DataAccessException.class, () -> authorDao.findById(author.getAuthorId()));
-    }
 }

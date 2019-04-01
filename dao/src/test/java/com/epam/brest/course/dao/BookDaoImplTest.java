@@ -59,7 +59,7 @@ class BookDaoImplTest {
     @Test
     void getAllBooksWrittenByAuthor() {
         List<Book> bookList = (List<Book>) bookDao.getAllBooksWrittenByAuthor(1);
-        assertEquals(1,bookList.size());
+        assertEquals(3, bookList.size());
     }
 
     @Test
@@ -71,29 +71,10 @@ class BookDaoImplTest {
         book.setReleaseDate(Date.valueOf(NEW_RELEASE_DATE));
 
         Book newBook = bookDao.addBook(book).get();
-       // assertNotNull(newBook.getBookId());
+        assertNotNull(newBook.getBookId());
 
         Stream<Book> bookAfterInsert = bookDao.findAll();
         assertEquals(1, bookAfterInsert.count() - bookBeforeInsert.count());
-    }
-
-    @Test
-    public void updateBook() {
-        Book book = new Book();
-        book.setBookTitle(NEW_BOOK_TITLE);
-        book.setReleaseDate(Date.valueOf(NEW_RELEASE_DATE));
-
-        Book newBook = bookDao.addBook(book).get();
-        assertNotNull(newBook.getBookId());
-
-        book.setBookTitle(NEW_BOOK_TITLE + "2");
-        book.setReleaseDate(Date.valueOf(EXPECTED_DATE));
-        bookDao.updateBook(book);
-
-        Book updatedBook = bookDao.findById(book.getBookId()).get();
-
-        assertEquals(NEW_BOOK_TITLE + "2", updatedBook.getBookTitle());
-        assertEquals(Date.valueOf(EXPECTED_DATE), updatedBook.getReleaseDate());
     }
 
     @Test
