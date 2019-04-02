@@ -29,7 +29,7 @@ public class AuthorRestClient implements AuthorService {
     @Override
     public Stream<Author> findAll() {
         LOGGER.debug("findAllAuthors()");
-        ResponseEntity responseEntity = restTemplate.getForEntity(url, List.class);
+        ResponseEntity responseEntity = restTemplate.getForEntity(url, Stream.class);
 
         Stream<Author> authors = (Stream<Author>) responseEntity.getBody();
         return authors;

@@ -29,7 +29,7 @@ public class BookRestClient implements BookService {
     @Override
     public Stream<Book> findAll() {
         LOGGER.debug("findAllBooks()");
-        ResponseEntity responseEntity = restTemplate.getForEntity(url, List.class);
+        ResponseEntity responseEntity = restTemplate.getForEntity(url, Stream.class);
         Stream<Book> books = (Stream<Book>) responseEntity.getBody();
         return books;
     }
